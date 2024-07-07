@@ -2,11 +2,6 @@
 shopt -s extglob
 set -eux pipefail
 
-# For backwards compatibility
-if [[ -n "$TOKEN" ]]; then
-    GITHUB_TOKEN=$TOKEN
-fi
-
 if [[ -z "$PAGES_BRANCH" ]]; then
     PAGES_BRANCH="gh-pages"
 fi
