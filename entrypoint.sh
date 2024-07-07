@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e
-set -o pipefail
+shopt -s extglob
+set -eux pipefail
 
 # For backwards compatibility
 if [[ -n "$TOKEN" ]]; then
@@ -66,7 +66,7 @@ main() {
 
     if ${BUILD_THEMES}; then
         echo "Fetching themes"
-        git submodule update --init --recursive
+        GIT_TRACE=1 GIT_CURL_VERBOSE=1 git submodule update --progress --init --recursive
     fi
 
     version=$(zola --version)
